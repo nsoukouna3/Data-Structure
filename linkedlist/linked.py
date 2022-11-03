@@ -8,7 +8,7 @@ class singleLinkedList:
         self.head=None           # head of the list
         self.tail=None           # tail of the list
         self.length=0
-     # insert the element at the beginning of the list
+    # insert the element at the beginning of the list
     def preppend(self,data):            
         newNode= Node(data)
         if self.length==0:
@@ -42,18 +42,30 @@ class singleLinkedList:
             self.tail= newNode
             self.length+=1
             
-            
-            
-            
-            
-            
-        
-        
-        
+    def get(self, index):                       # get method to get element using its indexes
+        pos=0
+        currentNode= self.head
+        if index> self.length or index<0:
+            print("index is out the range")
+            return
+        if currentNode is None:
+            return None
+        if index==0:
+            return currentNode.data
+        while pos < index-1 and index< self.length:
+            currentNode= currentNode.nextNode
+            pos+=1
+        if currentNode:
+            return currentNode.data
+                
+                  
     
 myList= singleLinkedList()
-myList.preppend(0)
-myList.append(1)
+myList.preppend(1)
 myList.append(2)
-myList.printing()
-print(myList.length)
+myList.append(3)
+myList.append(4)
+myList.append(5)
+#myList.printing()
+print(myList.get(1))
+#print(myList.length)
