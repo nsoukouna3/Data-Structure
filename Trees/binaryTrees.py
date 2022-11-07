@@ -29,6 +29,18 @@ class BinarySearchTree:
                     temp.right=newNode
                     return True
                 temp=temp.right
+    
+    
+    def contains(self, data):
+        currentNode= self.root
+        while currentNode:
+            if data< currentNode.data:
+                currentNode= currentNode.left
+            elif data > currentNode.data:
+                currentNode= currentNode.right
+            else:
+                return True
+        return False
                 
             
             
@@ -41,3 +53,4 @@ myBinary.Insert(3)
 print(myBinary.root.data)
 print(myBinary.root.left.data)
 print(myBinary.root.right.data)
+print(myBinary.contains(4))
