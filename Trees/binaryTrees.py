@@ -10,7 +10,7 @@ class BinarySearchTree:
         self.root=None
         
     def Insert(self, data):
-        newNode= Node(data)
+        newNode= Node(data)œ
         if self.root is None:
             self.root=newNode
             return True
