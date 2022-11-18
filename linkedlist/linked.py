@@ -96,7 +96,43 @@ class singleLinkedList:
             temp.nextNode=before
             before=temp
             temp = after
-            
+    
+    
+    def merge_two_sorted_linkedlist(self, list2):
+        dummyhead=None
+        l1_head= self.head
+        l2_head= list2.head
+        if l1_head is None:
+            return l2_head
+        if l2_head is None:
+            return l1_head
+        if l1_head and l2_head:
+            if l1_head.data<= l2_head.data:
+                currenthead= l1_head
+                l1_head= currenthead.nextNode
+            else:
+                currenthead= l2_head
+                l2_head=currenthead.nextNode
+        dummyhead= currenthead
+        while l1_head and l2_head:
+            if l1_head.data<= l2_head.data:
+                currenthead.nextNode= l1_head
+                currenthead=l1_head
+                l1_head=currenthead.nextNode
+            else:
+                currenthead.nextNode= l2_head
+                currenthead=l2_head
+                l2_head=currenthead.nextNode
+        if l1_head:
+            currenthead.nextNode=l1_head
+        if l2_head:
+            currenthead.nextNode=l2_head
+        return dummyhead
+                
+                
+    
+                
+                
            
         
         
@@ -111,11 +147,24 @@ myList.append(3)
 myList.append(4)
 myList.append(5)
 
-print(myList.get(1))
-myList.insert(9,3)
-myList.pop()
-myList.reverse()
+#print(myList.get(1))
+#myList.insert(9,3)
+#myList.pop()
+#myList.reverse()
 
-myList.printing()
+myList1= singleLinkedList()
+myList1.preppend(1)
+myList1.append(2)
+myList1.append(4)
+myList1.append(4)
+myList1.append(5)
+myList2= singleLinkedList()
+myList2.append(1)
+myList2.append(1)
+myList2.append(5)
+myList2.append(6)
+myList2.printing()
+myList1.merge_two_sorted_linkedlist(myList2)
+myList1.printing()
 
 #print(myList.length)
