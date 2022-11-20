@@ -10,7 +10,7 @@ class BinarySearchTree:
         self.root=None
         
     def Insert(self, data):
-        newNode= Node(data)œ
+        newNode= Node(data)
         if self.root is None:
             self.root=newNode
             return True
@@ -42,15 +42,33 @@ class BinarySearchTree:
                 return True
         return False
                 
+    def BreadthFirstSearch(self):
+        currentNode= self.root
+        queue=[]
+        result=[]
+        queue.append(currentNode)
+        while len(queue)>0:
+            currentNode= queue.pop(0)
+            result.append(currentNode.data)
+            if currentNode.left is not  None:
+                queue.append(currentNode.left)
+            if currentNode.right is not None:
+                queue.append(currentNode.right)
+                
+        return result
+    
             
             
         
         
 myBinary=BinarySearchTree()
-myBinary.Insert(2)
-myBinary.Insert(1)
+myBinary.Insert(5)
 myBinary.Insert(3)
-print(myBinary.root.data)
-print(myBinary.root.left.data)
-print(myBinary.root.right.data)
-print(myBinary.contains(4))
+myBinary.Insert(4)
+myBinary.Insert(2)
+myBinary.Insert(6)
+#print(myBinary.root.data)
+#print(myBinary.root.left.data)
+#print(myBinary.root.right.data)
+#print(myBinary.contains(4))
+print(myBinary.BreadthFirstSearch())
